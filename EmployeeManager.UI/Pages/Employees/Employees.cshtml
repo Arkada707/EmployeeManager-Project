@@ -1,0 +1,82 @@
+﻿@page
+@model EmployeeManager.UI.Pages.Employees.EmployeesModel
+@{
+    ViewData["Title"] = "Employees Dashboard";
+}
+
+<h2>Employees Dashboard</h2>
+
+<form method="post" asp-page-handler="Create">
+    <h4>Add Employee</h4>
+    <div>
+        <label>Name:</label>
+        <input asp-for="NewEmployee.Name" />
+    </div>
+    <div>
+        <label>Position:</label>
+        <input asp-for="NewEmployee.Position" />
+    </div>
+    <div>
+        <label>Salary:</label>
+        <input asp-for="NewEmployee.Salary" />
+    </div>
+    <button type="submit">Add</button>
+</form>
+
+<hr />
+
+@if (Model.Employees != null && Model.Employees.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in Model.Employees)
+            {
+                if (emp.Id == Model.EditEmployeeId)
+                {
+                    <tr>
+                        <form method="post" asp-page-handler="Edit">
+                            <input type="hidden" asp-for="EditEmployee.Id" value="@emp.Id" />
+                            <td><input asp-for="EditEmployee.Name" value="@emp.Name" /></td>
+                            <td><input asp-for="EditEmployee.Position" value="@emp.Position" /></td>
+                            <td><input asp-for="EditEmployee.Salary" value="@emp.Salary" /></td>
+                            <td><button type="submit">Save</button></td>
+                        </form>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>@emp.Name</td>
+                        <td>@emp.Position</td>
+                        <td>@emp.Salary</td>
+                        <td>
+                            <form method="post" asp-page-handler="Edit">
+                                <input type="hidden" name="EditEmployee.Id" value="@emp.Id" />
+                                <input type="hidden" name="EditEmployee.Name" value="@emp.Name" />
+                                <input type="hidden" name="EditEmployee.Position" value="@emp.Position" />
+                                <input type="hidden" name="EditEmployee.Salary" value="@emp.Salary" />
+                                <button type="submit">Edit</button>
+                            </form>
+                            <form method="post" asp-page-handler="Delete">
+                                <input type="hidden" name="id" value="@emp.Id" />
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No employees found.</p>
+}

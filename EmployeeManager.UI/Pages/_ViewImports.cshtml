@@ -1,0 +1,15 @@
+﻿@using EmployeeManager.UI
+@using EmployeeManager.Models
+@namespace EmployeeManager.UI.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@inject IHttpClientFactory ClientFactory
+
+@functions {
+    public async Task<List<Employee>> GetEmployeesAsync()
+    {
+        var client = ClientFactory.CreateClient("API");
+        var response = await client.GetFromJsonAsync<List<Employee>>("/api/employees");
+        return response!;
+    }
+}
