@@ -19,6 +19,13 @@ builder.Services.AddAuthentication("Bearer")
       };
   });
 
+builder.Services.AddHttpClient("API", client =>
+{
+    client.BaseAddress = new Uri("https://localhost:5001"); // API base URL
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+});
+
+
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminPolicy", p => p.RequireClaim("role", "Admin"));

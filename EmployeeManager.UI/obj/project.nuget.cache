@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AFsnAtpUvB0=",
+  "dgSpecHash": "cob3wvnPhgI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj",
+  "projectFilePath": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aqiel\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.6\\microsoft.aspnetcore.authentication.jwtbearer.9.0.6.nupkg.sha512",
     "C:\\Users\\aqiel\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.6\\microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",

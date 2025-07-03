@@ -33,6 +33,37 @@ namespace EmployeeManager.UI.Pages.Employees
             _clientFactory = clientFactory;
         }
 
+        public async Task<IActionResult> OnPostEditAsync(int id)
+        {
+            ModelState.Clear();
+            var client = _clientFactory.CreateClient("API");
+            var response = await client.GetAsync($"/api/employees/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<Employee>();
+                if (result != null)
+                {
+                    EditEmployee = result;
+                    EditEmployeeId = result.Id; // track current edit
+                    await LoadEmployeesAsync();
+                }
+            }
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostEditConfirmAsync()
+        {
+            var client = _clientFactory.CreateClient("API");
+            var response = await client.PutAsJsonAsync($"/api/employees/{EditEmployee.Id}", EditEmployee);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToPage(); // refresh the list
+            }
+            return Page(); // handle failure
+        }
+
+
+
         public async Task OnGetAsync()
         {
             await LoadEmployeesAsync();
@@ -46,13 +77,6 @@ namespace EmployeeManager.UI.Pages.Employees
             return RedirectToPage();
         }
 
-        public async Task<IActionResult> OnPostEditAsync()
-        {
-            var client = _clientFactory.CreateClient("API");
-            var content = new StringContent(JsonSerializer.Serialize(EditEmployee), Encoding.UTF8, "application/json");
-            await client.PutAsync($"api/employees/{EditEmployee.Id}", content);
-            return RedirectToPage();
-        }
 
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {

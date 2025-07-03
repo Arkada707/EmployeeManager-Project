@@ -3695,11 +3695,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
+      "projectUniqueName": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
       "projectName": "EmployeeManager.API",
-      "projectPath": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
+      "projectPath": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
       "packagesPath": "C:\\Users\\aqiel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\obj\\",
+      "outputPath": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aqiel\\AppData\\Roaming\\NuGet\\NuGet.Config"

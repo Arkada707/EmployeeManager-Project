@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fFKjQ2ar2zc=",
+  "dgSpecHash": "7pjeO/pkhkI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
+  "projectFilePath": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aqiel\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\aqiel\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.6\\microsoft.aspnetcore.authentication.jwtbearer.9.0.6.nupkg.sha512",

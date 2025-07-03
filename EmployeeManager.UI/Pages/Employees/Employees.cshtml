@@ -4,6 +4,22 @@
     ViewData["Title"] = "Employees Dashboard";
 }
 
+@if (!ViewData.ModelState.IsValid)
+{
+    <div style="color:red;">
+        <strong>ModelState Errors:</strong>
+        <ul>
+        @foreach (var entry in ViewData.ModelState)
+        {
+            foreach (var error in entry.Value.Errors)
+            {
+                <li>@entry.Key: @error.ErrorMessage</li>
+            }
+        }
+        </ul>
+    </div>
+}
+
 <h2>Employees Dashboard</h2>
 
 <form method="post" asp-page-handler="Create">
@@ -42,13 +58,20 @@
                 if (emp.Id == Model.EditEmployeeId)
                 {
                     <tr>
-                        <form method="post" asp-page-handler="Edit">
-                            <input type="hidden" asp-for="EditEmployee.Id" value="@emp.Id" />
-                            <td><input asp-for="EditEmployee.Name" value="@emp.Name" /></td>
-                            <td><input asp-for="EditEmployee.Position" value="@emp.Position" /></td>
-                            <td><input asp-for="EditEmployee.Salary" value="@emp.Salary" /></td>
-                            <td><button type="submit">Save</button></td>
-                        </form>
+                        <td colspan="4">
+                            <form method="post" asp-page-handler="EditConfirm">
+                                <input asp-for="EditEmployee.Id" type="hidden" />
+                                <label>Name:</label>
+                                <input asp-for="EditEmployee.Name" />
+                                <label>Position:</label>
+                                <input asp-for="EditEmployee.Position" />
+                                <label>Salary:</label>
+                                <input asp-for="EditEmployee.Salary" />
+                                <button type="submit">Confirm Edit</button>
+                                <button type="submit" formmethod="get">Cancel</button>
+                                @Html.AntiForgeryToken()
+                            </form>
+                        </td>
                     </tr>
                 }
                 else
@@ -58,14 +81,11 @@
                         <td>@emp.Position</td>
                         <td>@emp.Salary</td>
                         <td>
-                            <form method="post" asp-page-handler="Edit">
-                                <input type="hidden" name="EditEmployee.Id" value="@emp.Id" />
-                                <input type="hidden" name="EditEmployee.Name" value="@emp.Name" />
-                                <input type="hidden" name="EditEmployee.Position" value="@emp.Position" />
-                                <input type="hidden" name="EditEmployee.Salary" value="@emp.Salary" />
+                            <form method="post" asp-page-handler="Edit" style="display:inline">
+                                <input type="hidden" name="id" value="@emp.Id" />
                                 <button type="submit">Edit</button>
                             </form>
-                            <form method="post" asp-page-handler="Delete">
+                            <form method="post" asp-page-handler="Delete" style="display:inline">
                                 <input type="hidden" name="id" value="@emp.Id" />
                                 <button type="submit">Delete</button>
                             </form>

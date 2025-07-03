@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj": {}
+    "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\EmployeeManager.API.csproj": {
+    "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\EmployeeManager.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
+        "projectUniqueName": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
         "projectName": "EmployeeManager.API",
-        "projectPath": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
+        "projectPath": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\EmployeeManager.API.csproj",
         "packagesPath": "C:\\Users\\aqiel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\obj\\",
+        "outputPath": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aqiel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -90,14 +90,14 @@
         }
       }
     },
-    "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj": {
+    "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj",
+        "projectUniqueName": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj",
         "projectName": "EmployeeManager.UI",
-        "projectPath": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj",
+        "projectPath": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.UI\\EmployeeManager.UI.csproj",
         "packagesPath": "C:\\Users\\aqiel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.UI\\obj\\",
+        "outputPath": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.UI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aqiel\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -112,8 +112,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\EmployeeManager.API.csproj": {
-                "projectPath": "C:\\Users\\aqiel\\Desktop\\Test\\.NET Tests\\EmployeeManager Project\\EmployeeManager.API\\EmployeeManager.API.csproj"
+              "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\EmployeeManager.API.csproj": {
+                "projectPath": "C:\\Users\\aqiel\\Documents\\GitHub\\EmployeeManager-Project\\EmployeeManager.API\\EmployeeManager.API.csproj"
               }
             }
           }
