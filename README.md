@@ -181,6 +181,31 @@ Implement functional JWT authentication and role-based access with login/logout 
 
 ## ✅ Completed Today
 
+### 🛠️ Edit Feature Fix (Detailed)
+
+**Problem:** Clicking "Edit" on a row cleared the entire employee list or caused the table to disappear. Submitting an edit caused a 400 Bad Request. ModelState validation errors triggered even without form submission.
+
+**Cause:**
+
+- Razor markup structured the `<form>` incorrectly across `<tr>` and `<td>`, violating HTML rules.
+- Missing Anti-Forgery token in form.
+- Razor Pages validation for `NewEmployee` was being incorrectly applied when editing due to shared ModelState.
+
+**Fixes Applied:**
+
+- **UI:** Refactored `Employees.cshtml` to:
+  - Use `<td colspan="4">` when showing Edit form within a row.
+  - Avoid form tag wrapping `<tr>` directly.
+  - Add `@Html.AntiForgeryToken()` to Edit form.
+  - Render Add and Edit forms separately and conditionally.
+- **Backend:**
+  - Added `ModelState.Clear()` in `OnPostEditAsync` to prevent validation errors from unrelated form fields.
+  - Ensured `EditEmployeeId` is tracked to toggle the UI view for edit mode.
+
+**Result:** Edit functionality now properly populates form with selected employee data, updates via PUT, and refreshes the list.
+
+**Bonus:** ModelState validation messages now displayed clearly if something goes wrong.
+
 ### ✅ JWT Authentication
 
 - Created `/api/auth/login` endpoint in API with hardcoded users:
