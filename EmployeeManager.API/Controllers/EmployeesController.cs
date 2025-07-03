@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using EmployeeManager.Models;
 using EmployeeManager.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EmployeeManager.Controllers;
 
+[Authorize] // Require JWT token for all endpoints
 [Route("api/[controller]")]
 [ApiController]
 public class EmployeesController : ControllerBase
@@ -26,6 +28,7 @@ public class EmployeesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public IActionResult Create(Employee emp)
     {
         _context.Employees.Add(emp);
@@ -34,6 +37,7 @@ public class EmployeesController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public IActionResult Update(int id, Employee updated)
     {
         var emp = _context.Employees.Find(id);
@@ -48,6 +52,7 @@ public class EmployeesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public IActionResult Delete(int id)
     {
         var emp = _context.Employees.Find(id);

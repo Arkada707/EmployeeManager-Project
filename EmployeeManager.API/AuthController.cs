@@ -33,7 +33,7 @@ public class AuthController : ControllerBase
             new Claim(ClaimTypes.Role, role)
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MY_SUPER_SECRET_KEY"));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MY_SUPER_SECRET_KEY_1234567890_ABCDEFGH"));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(

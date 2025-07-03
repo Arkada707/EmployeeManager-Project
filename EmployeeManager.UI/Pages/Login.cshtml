@@ -1,0 +1,24 @@
+@page
+@model EmployeeManager.UI.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div style="color:red">@Model.ErrorMessage</div>
+}
+
+<form method="post">
+    <div>
+        <label>Username:</label>
+        <input asp-for="Username" />
+    </div>
+    <div>
+        <label>Password:</label>
+        <input asp-for="Password" type="password" />
+    </div>
+    <button type="submit">Login</button>
+</form> 

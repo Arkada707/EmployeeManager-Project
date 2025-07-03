@@ -165,7 +165,123 @@ git push -u origin main
 - All key setup, errors, and integrations resolved
 - Solid foundation for adding JWT, roles, and advanced UI
 
----
-
 > 🚀 Great progress today. Next step: make it secure, styled, and user-aware!
 
+---
+
+# .NET Developer Prep — Day 2 Summary (Authentication & Authorization)
+
+## 📅 Date: 2025-07-03
+
+## 🎯 Goal
+
+Implement functional JWT authentication and role-based access with login/logout support for the Employee Manager app.
+
+---
+
+## ✅ Completed Today
+
+### ✅ JWT Authentication
+
+- Created `/api/auth/login` endpoint in API with hardcoded users:
+  - `admin` / `1234`
+  - `viewer` / `1234`
+- Issued JWT token on successful login with user role in the claims.
+- Used 32+ character secret key to avoid token generation errors.
+
+### ✅ API Protection
+
+- Protected `EmployeeController` endpoints using `[Authorize]` attribute.
+- Configured JWT authentication in `Program.cs`:
+
+```csharp
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes("MY_SUPER_SECRET_KEY_12345678901234567890"))
+        };
+    });
+
+app.UseAuthentication();
+app.UseAuthorization();
+```
+
+### ✅ UI Login & Session Handling
+
+- Created login page in Razor Pages.
+- Stored token in session upon successful login.
+- Parsed JWT from session to extract user role.
+- Conditionally rendered UI (e.g., hide Edit/Delete for Viewer).
+
+### ✅ Authorization Logic
+
+- Used `IsAdmin` and `IsViewer` flags in Razor code-behind.
+- Redirected to Login page if token not found in session.
+- Logout clears session and redirects.
+
+### ✅ Navigation
+
+- Redirected root `/` to `/Employees/Employees`.
+- Removed Home and Privacy links for clarity.
+- Added Logout link to Employees page.
+
+---
+
+## 🐛 Issues & Fixes
+
+### ❌ JWT key too short
+
+**Error:**
+
+```
+IDX10720: Encryption key must be at least 256 bits
+```
+
+**Fix:** Extended key to 32+ characters
+
+---
+
+### ❌ Duplicate Bearer Authentication Scheme
+
+**Fix:** Removed second `AddAuthentication("Bearer")` block in `Program.cs`
+
+---
+
+### ❌ UI Edit Feature Bug
+
+**Problem:** Edit button cleared employee list or triggered errors  
+**Fix:** Cleaned Razor markup, added `ModelState.Clear()`, and fixed form bindings
+
+---
+
+### ❌ Session token not used consistently
+
+**Fix:** Wrapped all UI API calls to use the session token in request headers
+
+---
+
+## ✅ Checklist (Updated)
+
+- [x] Setup project structure and dependencies
+- [x] Build API with full CRUD
+- [x] Connect Razor UI to API
+- [x] Implement create/edit/delete on same page
+- [x] Add JWT login with hardcoded users
+- [x] Implement role-based UI (Admin/Viewer)
+- [x] Protect API with `[Authorize]`
+- [x] Redirect unauthenticated users
+- [x] Add logout support
+- [ ] Add Bootstrap or Tailwind styling
+- [ ] Add search and sort
+- [ ] Hook to a real DB with user table (optional)
+
+---
+
+> ✅ Day 2 wraps up secure access and role protection — ready for polishing and enhancements next!

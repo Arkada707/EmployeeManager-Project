@@ -38,6 +38,8 @@ builder.Services.AddHttpClient("API", client =>
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 });
 
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -52,6 +54,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapRazorPages();
 

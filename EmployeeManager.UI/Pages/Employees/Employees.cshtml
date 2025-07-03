@@ -20,26 +20,29 @@
     </div>
 }
 
+<a href="/Logout" style="float:right;">Logout</a>
 <h2>Employees Dashboard</h2>
 
-<form method="post" asp-page-handler="Create">
-    <h4>Add Employee</h4>
-    <div>
-        <label>Name:</label>
-        <input asp-for="NewEmployee.Name" />
-    </div>
-    <div>
-        <label>Position:</label>
-        <input asp-for="NewEmployee.Position" />
-    </div>
-    <div>
-        <label>Salary:</label>
-        <input asp-for="NewEmployee.Salary" />
-    </div>
-    <button type="submit">Add</button>
-</form>
-
-<hr />
+@if (Model.IsAdmin)
+{
+    <form method="post" asp-page-handler="Create">
+        <h4>Add Employee</h4>
+        <div>
+            <label>Name:</label>
+            <input asp-for="NewEmployee.Name" />
+        </div>
+        <div>
+            <label>Position:</label>
+            <input asp-for="NewEmployee.Position" />
+        </div>
+        <div>
+            <label>Salary:</label>
+            <input asp-for="NewEmployee.Salary" />
+        </div>
+        <button type="submit">Add</button>
+    </form>
+    <hr />
+}
 
 @if (Model.Employees != null && Model.Employees.Any())
 {
@@ -49,13 +52,16 @@
                 <th>Name</th>
                 <th>Position</th>
                 <th>Salary</th>
-                <th>Actions</th>
+                @if (Model.IsAdmin)
+                {
+                    <th>Actions</th>
+                }
             </tr>
         </thead>
         <tbody>
             @foreach (var emp in Model.Employees)
             {
-                if (emp.Id == Model.EditEmployeeId)
+                if (emp.Id == Model.EditEmployeeId && Model.IsAdmin)
                 {
                     <tr>
                         <td colspan="4">
@@ -80,16 +86,19 @@
                         <td>@emp.Name</td>
                         <td>@emp.Position</td>
                         <td>@emp.Salary</td>
-                        <td>
-                            <form method="post" asp-page-handler="Edit" style="display:inline">
-                                <input type="hidden" name="id" value="@emp.Id" />
-                                <button type="submit">Edit</button>
-                            </form>
-                            <form method="post" asp-page-handler="Delete" style="display:inline">
-                                <input type="hidden" name="id" value="@emp.Id" />
-                                <button type="submit">Delete</button>
-                            </form>
-                        </td>
+                        @if (Model.IsAdmin)
+                        {
+                            <td>
+                                <form method="post" asp-page-handler="Edit" style="display:inline">
+                                    <input type="hidden" name="id" value="@emp.Id" />
+                                    <button type="submit">Edit</button>
+                                </form>
+                                <form method="post" asp-page-handler="Delete" style="display:inline">
+                                    <input type="hidden" name="id" value="@emp.Id" />
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        }
                     </tr>
                 }
             }
